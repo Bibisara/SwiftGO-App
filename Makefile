@@ -1,14 +1,14 @@
-BINARY_NAME=celeritasApp
+BINARY_NAME=SwiftGOApp.exe
 
 build:
-	@echo "Building Celeritas..."
+	@echo "Building SwiftGO..."
 	@go build -o tmp/${BINARY_NAME} .
-	@echo "Celeritas built!"
+	@echo "SwiftGO built!"
 
 run: build
-	@echo "Starting Celeritas..."
+	@echo "Starting SwiftGO..."
 	@./tmp/${BINARY_NAME} &
-	@echo "Celeritas started!"
+	@echo "SwiftGO started!"
 
 clean:
 	@echo "Cleaning..."
@@ -24,8 +24,8 @@ test:
 start: run
 
 stop:
-	@echo "Stopping Celeritas..."
+	@echo "Stopping SwiftGO..."
 	@-pkill -SIGTERM -f "./tmp/${BINARY_NAME}"
-	@echo "Stopped Celeritas!"
+	@echo "Stopped SwiftGO!"
 
 restart: stop start

@@ -4,7 +4,7 @@ go 1.17
 
 require (
 	github.com/go-chi/chi/v5 v5.0.7
-	github.com/tsawler/celeritas v0.0.0
+	github.com/bibisara/swiftgo v0.0.0
 	github.com/upper/db/v4 v4.2.1
 )
 
@@ -129,4 +129,4 @@ require (
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 )
 
-replace github.com/tsawler/celeritas v0.0.0 => ../celeritas
+replace github.com/bibisara/swiftgo v0.0.0 => ../SwiftGO

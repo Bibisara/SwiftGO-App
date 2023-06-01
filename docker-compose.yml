@@ -11,7 +11,7 @@ services:
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: password
-      POSTGRES_DB: celeritas
+      POSTGRES_DB: swiftgo
     volumes:
       - ./db-data/postgres/:/var/lib/postgresql/data/
 
@@ -60,7 +60,7 @@ services:
   #   restart: always
   #   environment:
   #     MYSQL_ROOT_PASSWORD: password
-  #     MYSQL_DATABASE: celeritas
+  #     MYSQL_DATABASE: swiftgo
   #     MYSQL_USER: mariadb
   #     MYSQL_PASSWORD: password
 

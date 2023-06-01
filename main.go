@@ -9,15 +9,15 @@ import (
 	"sync"
 	"syscall"
 
-	"github.com/tsawler/celeritas"
+	"github.com/bibisara/swiftgo"
 )
 
 type application struct {
-	App *celeritas.Celeritas
-	Handlers *handlers.Handlers
-	Models data.Models
+	App        *swiftgo.SwiftGO
+	Handlers   *handlers.Handlers
+	Models     data.Models
 	Middleware *middleware.Middleware
-	wg sync.WaitGroup
+	wg         sync.WaitGroup
 }
 
 func main() {

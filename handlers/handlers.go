@@ -3,23 +3,23 @@ package handlers
 import (
 	"fmt"
 	"github.com/CloudyKit/jet/v6"
-	"github.com/tsawler/celeritas/filesystems"
-	"github.com/tsawler/celeritas/filesystems/miniofilesystem"
-	"github.com/tsawler/celeritas/filesystems/s3filesystem"
-	"github.com/tsawler/celeritas/filesystems/sftpfilesystem"
-	"github.com/tsawler/celeritas/filesystems/webdavfilesystem"
+	"github.com/bibisara/swiftgo/filesystems"
+	"github.com/bibisara/swiftgo/filesystems/miniofilesystem"
+	"github.com/bibisara/swiftgo/filesystems/s3filesystem"
+	"github.com/bibisara/swiftgo/filesystems/sftpfilesystem"
+	"github.com/bibisara/swiftgo/filesystems/webdavfilesystem"
 	"io"
 	"myapp/data"
 	"net/http"
 	"net/url"
 	"os"
 
-	"github.com/tsawler/celeritas"
+	"github.com/bibisara/swiftgo"
 )
 
-// Handlers is the type for handlers, and gives access to Celeritas and models
+// Handlers is the type for handlers, and gives access to SwiftGO and models
 type Handlers struct {
-	App    *celeritas.Celeritas
+	App    *swiftgo.SwiftGO
 	Models data.Models
 }
 
@@ -31,14 +31,14 @@ func (h *Handlers) Home(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func (h *Handlers) CeleritasUpload(w http.ResponseWriter, r *http.Request) {
-	err := h.render(w, r, "celeritas-upload", nil, nil)
+func (h *Handlers) SwiftGOUpload(w http.ResponseWriter, r *http.Request) {
+	err := h.render(w, r, "swiftgo-upload", nil, nil)
 	if err != nil {
 		h.App.ErrorLog.Println(err)
 	}
 }
 
-func (h *Handlers) PostCeleritasUpload(w http.ResponseWriter, r *http.Request) {
+func (h *Handlers) PostSwiftGOUpload(w http.ResponseWriter, r *http.Request) {
 	err := h.App.UploadFile(r, "", "formFile", &h.App.S3)
 	if err != nil {
 		h.App.ErrorLog.Println(err)
@@ -127,7 +127,7 @@ func (h *Handlers) PostUploadToFS(w http.ResponseWriter, r *http.Request) {
 
 	uploadType := r.Form.Get("upload-type")
 
-	switch uploadType{
+	switch uploadType {
 	case "MINIO":
 		fs := h.App.FileSystems["MINIO"].(miniofilesystem.Minio)
 		err = fs.Put(fileName, "")
@@ -212,7 +212,7 @@ func (h *Handlers) DeleteFromFS(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func (h *Handlers) Clicker(w http.ResponseWriter, r * http.Request) {
+func (h *Handlers) Clicker(w http.ResponseWriter, r *http.Request) {
 	err := h.render(w, r, "tester", nil, nil)
 	if err != nil {
 		h.App.ErrorLog.Println(err)

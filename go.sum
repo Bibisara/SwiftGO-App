@@ -1268,8 +1268,8 @@ github.com/tidwall/pretty v0.0.0-20180105212114-65a9db5fad51/go.mod h1:XNkn88O1C
 github.com/tidwall/pretty v1.0.0/go.mod h1:XNkn88O1ChpSDQmQeStsy+sBenx6DDtFZJxhVysOjyk=
 github.com/tmc/grpc-websocket-proxy v0.0.0-20170815181823-89b8d40f7ca8/go.mod h1:ncp9v5uamzpCO7NfCPTXjqaC+bZgJeR0sMTm6dMHP7U=
 github.com/tmc/grpc-websocket-proxy v0.0.0-20190109142713-0ad062ec5ee5/go.mod h1:ncp9v5uamzpCO7NfCPTXjqaC+bZgJeR0sMTm6dMHP7U=
-github.com/tsawler/celeritas v0.0.0-20211116153726-f2faba476e5f h1:aNhliFE1pkAGzmwdlvhlrN0USGE9zu5ohd1+8fucIGk=
-github.com/tsawler/celeritas v0.0.0-20211116153726-f2faba476e5f/go.mod h1:YJb47oxMeL8Vx55rD3FvAosVQrRVtRzuMz0yOBqNvVo=
+github.com/bibisara/swiftgo v0.0.0-20211116153726-f2faba476e5f h1:aNhliFE1pkAGzmwdlvhlrN0USGE9zu5ohd1+8fucIGk=
+github.com/bibisara/swiftgo v0.0.0-20211116153726-f2faba476e5f/go.mod h1:YJb47oxMeL8Vx55rD3FvAosVQrRVtRzuMz0yOBqNvVo=
 github.com/tv42/httpunix v0.0.0-20191220191345-2ba4b9c3382c/go.mod h1:hzIxponao9Kjc7aWznkXaL4U4TWaDSs8zcsY4Ka08nM=
 github.com/ugorji/go v1.1.4/go.mod h1:uQMGLiO92mf5W77hV/PUCpI3pbzQx3CRekS0kk+RGrc=
 github.com/ugorji/go/codec v0.0.0-20181204163529-d75b2dcb6bc8/go.mod h1:VFNgLljTbGfSG7qAOspJ7OScBnGdDN/yBr0sguwnwf0=

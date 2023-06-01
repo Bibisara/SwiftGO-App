@@ -1,1 +1,1 @@
-# Celeritas skeleton application
+# Swiftgo skeleton application

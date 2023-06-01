@@ -4,10 +4,10 @@ import (
 	"context"
 	"github.com/CloudyKit/jet/v6"
 	"github.com/alexedwards/scs/v2"
+	"github.com/bibisara/swiftgo"
+	"github.com/bibisara/swiftgo/mailer"
+	"github.com/bibisara/swiftgo/render"
 	"github.com/go-chi/chi/v5"
-	"github.com/tsawler/celeritas"
-	"github.com/tsawler/celeritas/mailer"
-	"github.com/tsawler/celeritas/render"
 	"log"
 	"net/http"
 	"os"
@@ -15,7 +15,7 @@ import (
 	"time"
 )
 
-var cel celeritas.Celeritas
+var swi swiftgo.SwiftGO
 var testSession *scs.SessionManager
 var testHandlers Handlers
 
@@ -37,38 +37,38 @@ func TestMain(m *testing.M) {
 	myRenderer := render.Render{
 		Renderer: "jet",
 		RootPath: "../",
-		Port: "4000",
+		Port:     "4000",
 		JetViews: views,
-		Session: testSession,
+		Session:  testSession,
 	}
 
-	cel = celeritas.Celeritas{
-		AppName: "myapp",
-		Debug: true,
-		Version: "1.0.0",
-		ErrorLog: errorLog,
-		InfoLog: infoLog,
-		RootPath: "../",
-		Routes: nil,
-		Render: &myRenderer,
-		Session: testSession,
-		DB: celeritas.Database{},
-		JetViews: views,
-		EncryptionKey: cel.RandomString(32),
-		Cache: nil,
-		Scheduler: nil,
-		Mail: mailer.Mail{},
-		Server: celeritas.Server{},
+	swi = swiftgo.SwiftGO{
+		AppName:       "myapp",
+		Debug:         true,
+		Version:       "1.0.0",
+		ErrorLog:      errorLog,
+		InfoLog:       infoLog,
+		RootPath:      "../",
+		Routes:        nil,
+		Render:        &myRenderer,
+		Session:       testSession,
+		DB:            swiftgo.Database{},
+		JetViews:      views,
+		EncryptionKey: swi.RandomString(32),
+		Cache:         nil,
+		Scheduler:     nil,
+		Mail:          mailer.Mail{},
+		Server:        swiftgo.Server{},
 	}
 
-	testHandlers.App = &cel
+	testHandlers.App = &swi
 
 	os.Exit(m.Run())
 }
 
 func getRoutes() http.Handler {
 	mux := chi.NewRouter()
-	mux.Use(cel.SessionLoad)
+	mux.Use(swi.SessionLoad)
 	mux.Get("/", testHandlers.Home)
 	mux.Get("/tester", testHandlers.Clicker)
 	fileServer := http.FileServer(http.Dir("./../public"))

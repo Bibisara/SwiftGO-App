@@ -3,7 +3,7 @@ package main
 import (
 	"net/http"
 
-	"github.com/tsawler/celeritas"
+	"github.com/bibisara/swiftgo"
 
 	"github.com/go-chi/chi/v5"
 )
@@ -21,8 +21,8 @@ func (a *application) routes() *chi.Mux {
 	a.App.Routes.Get("/auth/{provider}", a.Handlers.SocialLogin)
 	a.App.Routes.Get("/auth/{provider}/callback", a.Handlers.SocialMediaCallback)
 
-	a.get("/upload", a.Handlers.CeleritasUpload)
-	a.post("/upload", a.Handlers.PostCeleritasUpload)
+	a.get("/upload", a.Handlers.SwiftGOUpload)
+	a.post("/upload", a.Handlers.PostSwiftGOUpload)
 
 	a.get("/list-fs", a.Handlers.ListFS)
 
@@ -35,8 +35,8 @@ func (a *application) routes() *chi.Mux {
 	fileServer := http.FileServer(http.Dir("./public"))
 	a.App.Routes.Handle("/public/*", http.StripPrefix("/public", fileServer))
 
-	// routes from celeritas
-	a.App.Routes.Mount("/celeritas", celeritas.Routes())
+	// routes from swiftgo
+	a.App.Routes.Mount("/swiftgo", swiftgo.Routes())
 	a.App.Routes.Mount("/api", a.ApiRoutes())
 
 	return a.App.Routes

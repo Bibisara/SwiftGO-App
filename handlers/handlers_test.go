@@ -28,7 +28,7 @@ func TestHome(t *testing.T) {
 		t.Fatal(err)
 	}
 	if !strings.Contains(string(bodyText), "awesome") {
-		cel.TakeScreenShot(ts.URL + "/", "HomeTest", 1500, 1000)
+		swi.TakeScreenShot(ts.URL+"/", "HomeTest", 1500, 1000)
 		t.Error("did not find submarine")
 	}
 }
@@ -38,9 +38,9 @@ func TestClicker(t *testing.T) {
 	ts := httptest.NewTLSServer(routes)
 	defer ts.Close()
 
-	page := cel.FetchPage(ts.URL + "/tester")
-	outputElement := cel.SelectElementByID(page, "output")
-	button := cel.SelectElementByID(page, "clicker")
+	page := swi.FetchPage(ts.URL + "/tester")
+	outputElement := swi.SelectElementByID(page, "output")
+	button := swi.SelectElementByID(page, "clicker")
 
 	testHTML, _ := outputElement.HTML()
 	if strings.Contains(testHTML, "Clicked the button") {
@@ -61,7 +61,7 @@ func TestHome2(t *testing.T) {
 
 	rr := httptest.NewRecorder()
 
-	cel.Session.Put(ctx, "test_key", "Hello, world.")
+	swi.Session.Put(ctx, "test_key", "Hello, world.")
 
 	h := http.HandlerFunc(testHandlers.Home)
 	h.ServeHTTP(rr, req)
@@ -70,7 +70,7 @@ func TestHome2(t *testing.T) {
 		t.Errorf("returned wrong response code; got %d but expected 200", rr.Code)
 	}
 
-	if cel.Session.GetString(ctx, "test_key") != "Hello, world." {
+	if swi.Session.GetString(ctx, "test_key") != "Hello, world." {
 		t.Error("did not get correct value from session")
 	}
 }

@@ -7,7 +7,7 @@ import (
 	"myapp/middleware"
 	"os"
 
-	"github.com/tsawler/celeritas"
+	"github.com/bibisara/swiftgo"
 )
 
 func initApplication() *application {
@@ -16,26 +16,26 @@ func initApplication() *application {
 		log.Fatal(err)
 	}
 
-	// init celeritas
-	cel := &celeritas.Celeritas{}
-	err = cel.New(path)
+	// init swiftgo
+	swi := &swiftgo.SwiftGO{}
+	err = swi.New(path)
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	cel.AppName = "myapp"
+	swi.AppName = "myapp"
 
 	myMiddleware := &middleware.Middleware{
-		App: cel,
+		App: swi,
 	}
 
 	myHandlers := &handlers.Handlers{
-		App: cel,
+		App: swi,
 	}
 
 	app := &application{
-		App: cel,
-		Handlers: myHandlers,
+		App:        swi,
+		Handlers:   myHandlers,
 		Middleware: myMiddleware,
 	}
 
