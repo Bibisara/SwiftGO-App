@@ -6,7 +6,7 @@ build:
     @go build -o tmp/${BINARY_NAME} .
 	@echo SwiftGO built!
 
-run:
+run: build
 	@echo Staring SwiftGO...
     @start /min cmd /c tmp\${BINARY_NAME} &
 	@echo SwiftGO started!
